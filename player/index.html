@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+html,body{
+  margin:0;
+  height:100%;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+video,audio{
+  width:90%;
+}
+</style>
+</head>
+<body>
 
+<div id="player"></div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+if(id){
+  if(id.endsWith(".mp4")){
+    document.getElementById("player").innerHTML =
+      `<video controls autoplay>
+        <source src="../media/${id}" type="video/mp4">
+      </video>`;
+  }
+  else if(id.endsWith(".mp3")){
+    document.getElementById("player").innerHTML =
+      `<audio controls autoplay>
+        <source src="../media/${id}" type="audio/mpeg">
+      </audio>`;
+  }
+}
+</script>
+
+</body>
+</html>
